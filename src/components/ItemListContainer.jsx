@@ -14,7 +14,7 @@ export const ItemListContainer = ({ mensaje }) => {
   return (
     <div className='container fixed-bottom mb-5'>
       <div className='d-flex justify-content-center align-items-center'>
-        <p className='mx-3'>{mensaje}</p>
+        <p className='align-items-center mx-3'>{mensaje}</p>
         <button
           className='btn btn-outline-primary mr-3'
           onClick={handleIncrement}
@@ -25,7 +25,7 @@ export const ItemListContainer = ({ mensaje }) => {
         <button className='btn btn-outline-primary' onClick={handleDecrement}>
           -
         </button>
-        <button className='btn btn-primary mx-2' onClick={handleAddToCart}>
+        <button className='btn btn-primary mx-4' onClick={handleAddToCart}>
           Agregar al carrito
         </button>
       </div>
