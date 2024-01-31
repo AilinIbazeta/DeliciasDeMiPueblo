@@ -14,7 +14,7 @@ export const ItemListContainer = ({ mensaje }) => {
   return (
     <div className='container fixed-bottom mb-5'>
       <div className='d-flex justify-content-center align-items-center'>
-        <p className='mx-3 align-items-center'>{mensaje}</p>
+        <p className='m-3 align-items-center'>{mensaje}</p>
         <button
           className='btn btn-outline-primary mr-3'
           onClick={handleIncrement}
