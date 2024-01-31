@@ -3,7 +3,7 @@ export const CartWidget = () => {
   const itemCount = 5
   return (
     <button>
-      <FaCartPlus size='30px' /> <span className='mb-3'>{itemCount}</span>
+      <FaCartPlus size='35px' /> <span className='mb-3'>{itemCount}</span>
     </button>
   )
 }
