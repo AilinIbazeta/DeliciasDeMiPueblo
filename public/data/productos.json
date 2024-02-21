@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "nombre": "Tableta dulce de alcayota",
+    "marca": "artesanal",
+    "precio": "120",
+    "stock": "50",
+    "img": "1.png",
+    "category": "Tabletas"
+  },
+  {
+    "id": 2,
+    "nombre": "Tableta dulce de leche",
+    "marca": "artesanal",
+    "precio": "120",
+    "stock": "50",
+    "img": "2.png",
+    "category": "Tabletas"
+  },
+  {
+    "id": 3,
+    "nombre": "Dulce de Alcayota",
+    "marca": "Cristo de los Cerros",
+    "precio": "1200",
+    "stock": "20",
+    "img": "3.png",
+    "category": "Dulces"
+  },
+  {
+    "id": 4,
+    "nombre": "Dulce de Leche",
+    "marca": "Cristo de los Cerros",
+    "precio": "1200",
+    "stock": "20",
+    "img": "4.png",
+    "category": "Dulces"
+  },
+  {
+    "id": 5,
+    "nombre": "Torta al rescoldo",
+    "marca": "Tudcum",
+    "precio": "1000",
+    "stock": "40",
+    "img": "5.png",
+    "category": "Tortas"
+  }
+]

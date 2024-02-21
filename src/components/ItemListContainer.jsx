@@ -1,34 +1,30 @@
-import { useState } from 'react'
-export const ItemListContainer = ({ mensaje }) => {
-  const [numero, setNumero] = useState(0)
-  const handleIncrement = () => {
-    setNumero(numero + 1)
-  }
-  const handleDecrement = () => {
-    setNumero(numero - 1)
-  }
-  const handleAddToCart = () => {
-    console.log('Producto agregado al carrito')
-  }
+import { useEffect, useState } from 'react'
+import { ItemList } from './ItemList'
+import { useParams } from 'react-router-dom'
+
+export const ItemListContainer = ({ mensaje, product }) => {
+  const [productos, setProductos] = useState([])
+  const { categoryId } = useParams()
+
+  useEffect(() => {
+    fetch('../data/productos.json')
+      .then((response) => response.json())
+      .then((prods) => {
+        if (categoryId) {
+          console.log(categoryId)
+          const productos = prods.filter((data) => data.category == categoryId)
+          console.log({ productos })
+          setProductos(productos)
+        } else {
+          setProductos(prods)
+        }
+      })
+      .catch((error) => console.log(error))
+  }, [categoryId])
 
   return (
-    <div className='container fixed-bottom mb-5'>
-      <div className='d-flex justify-content-center align-items-center'>
-        <p className='m-3 align-items-center'>{mensaje}</p>
-        <button
-          className='btn btn-outline-primary mr-3'
-          onClick={handleIncrement}
-        >
-          +
-        </button>
-        <span className='mx-3'>{numero}</span>
-        <button className='btn btn-outline-primary' onClick={handleDecrement}>
-          -
-        </button>
-        <button className='btn btn-primary mx-4' onClick={handleAddToCart}>
-          Agregar al carrito
-        </button>
-      </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+      <ItemList products={productos} />
     </div>
   )
 }
