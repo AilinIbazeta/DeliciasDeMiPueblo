@@ -19,7 +19,7 @@ export const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Aquí puedes agregar la lógica para enviar los datos del formulario
+
     console.log(formData)
 
     const dataForm = new FormData(formData)
@@ -106,7 +106,7 @@ export const Checkout = () => {
             required
           />
         </div>
-        <button type='submit' className='btn btn-primary'>
+        <button type='submit' className='btn btn-primary mt-2'>
           Finalizar
         </button>
       </form>

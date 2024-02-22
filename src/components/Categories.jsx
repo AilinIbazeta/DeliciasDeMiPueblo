@@ -4,15 +4,15 @@ export const Categories = () => {
     <div className='navItemsContent'>
       <Link to={'/category/Tabletas'}>
         {' '}
-        <button className='navItems'>Tabletas</button>
+        <button className='navItems btn btn-lg'>Tabletas</button>
       </Link>
       <Link to={'/category/Dulces'}>
         {' '}
-        <button className='navItems'>Dulces</button>
+        <button className='navItems btn btn-lg'>Dulces</button>
       </Link>
       <Link to={'/category/Tortas'}>
         {' '}
-        <button className='navItems'>Tortas</button>
+        <button className='navItems btn btn-lg'>Tortas</button>
       </Link>
     </div>
   )

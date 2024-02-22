@@ -4,22 +4,23 @@ import { Categories } from './Categories'
 import { Link } from 'react-router-dom'
 export const NavBar = () => {
   return (
-    <div>
-      <nav
-        className='navbar navbar-light bg-light fixed-top'
-        style={{ backgroundColor: '#e3f2fd' }}
-      >
-        <Link to={'/'}>
-          <img src={logo} alt='Logo' className='navbar-logo' />
+    <nav className='navbar fixed-top' style={{ backgroundColor: 'white' }}>
+      <div className='container-fluid d-flex justify-content-between align-items-center'>
+        <Link to={'/'} className='navbar-brand col-6'>
+          <img
+            src={logo}
+            alt='Logo'
+            className='navbar-logo'
+            style={{ maxWidth: '700px' }}
+          />
         </Link>
 
-        <div className='container-fluid d-flex justify-content-between align-items-center'>
+        <div className='d-flex justify-content-start align-items-center flex-grow-1 col-4'>
           <Categories />
-          <div className='mx-5'>
-            <CartWidget />
-          </div>
         </div>
-      </nav>
-    </div>
+
+        <CartWidget />
+      </div>
+    </nav>
   )
 }

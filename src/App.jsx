@@ -15,17 +15,17 @@ export const App = () => {
       <Routes>
         <Route
           path='/'
-          element={<ItemListContainer ClassName='container mt-10' />}
+          element={<ItemListContainer ClassName='container' />}
         ></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
         <Route
           path='/category/:categoryId'
-          element={<ItemListContainer />}
+          element={<ItemListContainer ClassName='container' />}
         ></Route>
         <Route
           path='/product/:productId'
-          element={<ItemDetailsContainer />}
+          element={<ItemDetailsContainer ClassName='container mt-5' />}
         ></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
