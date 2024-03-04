@@ -1,11 +1,12 @@
 import { Item } from './Item'
-export const ItemList = ({ products }) => {
+import { ItemCart } from './ItemCart'
+
+export const ItemList = ({ products, plantilla }) => {
   return (
     <>
-      {products.map((prod) => (
-        // Recibo un array de objetos normal y lo devuelvo como plantilla
-        <Item product={prod} />
-      ))}
+      {plantilla === 'Item'
+        ? products.map((prod) => <Item key={prod.id} product={prod} />)
+        : products.map((prod) => <ItemCart key={prod.id} product={prod} />)}
     </>
   )
 }

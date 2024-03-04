@@ -8,28 +8,31 @@ import { Cart } from './components/Cart'
 import { Checkout } from './components/Checkout'
 import { ItemDetailsContainer } from './components/ItemDetailsContainer'
 import { NotFound } from './components/NotFound'
+import { CarritoProvider } from './context/CartContext'
 export const App = () => {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route
-          path='/'
-          element={<ItemListContainer ClassName='container' />}
-        ></Route>
-        <Route path='/cart' element={<Cart />}></Route>
-        <Route path='/checkout' element={<Checkout />}></Route>
-        <Route
-          path='/category/:categoryId'
-          element={<ItemListContainer ClassName='container' />}
-        ></Route>
-        <Route
-          path='/product/:productId'
-          element={<ItemDetailsContainer ClassName='container mt-5' />}
-        ></Route>
-        <Route path='*' element={<NotFound />}></Route>
-      </Routes>
-      <Footer />
+      <CarritoProvider>
+        <NavBar />
+        <Routes>
+          <Route
+            path='/'
+            element={<ItemListContainer ClassName='container' />}
+          ></Route>
+          <Route path='/cart' element={<Cart />}></Route>
+          <Route path='/checkout' element={<Checkout />}></Route>
+          <Route
+            path='/category/:categoryId'
+            element={<ItemListContainer ClassName='container' />}
+          ></Route>
+          <Route
+            path='/product/:productId'
+            element={<ItemDetailsContainer ClassName='container mt-5' />}
+          ></Route>
+          <Route path='*' element={<NotFound />}></Route>
+        </Routes>
+        <Footer />
+      </CarritoProvider>
     </BrowserRouter>
   )
 }

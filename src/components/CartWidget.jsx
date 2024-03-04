@@ -1,9 +1,15 @@
 import { FaCartPlus } from 'react-icons/fa'
+import { useCarritoContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 export const CartWidget = () => {
-  const itemCount = 5
+  const { getItemQuantity } = useCarritoContext()
+
   return (
-    <button>
-      <FaCartPlus size='35px' /> <span className='mb-3'>{itemCount}</span>
-    </button>
+    <Link to={'/cart'}>
+      <button>
+        <FaCartPlus size='35px' />{' '}
+        <span className='mb-3'>{getItemQuantity()}</span>
+      </button>
+    </Link>
   )
 }

@@ -20,13 +20,9 @@ export const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(formData)
-
     const dataForm = new FormData(formData)
-    console.log(dataForm)
 
     const data = Objet.fromEntries(dataForm)
-    console.log(data)
     e.target.reset()
   }
 

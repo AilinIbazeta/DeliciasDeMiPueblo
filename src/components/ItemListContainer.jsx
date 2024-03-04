@@ -11,8 +11,10 @@ export const ItemListContainer = ({ mensaje, product }) => {
       .then((response) => response.json())
       .then((prods) => {
         if (categoryId) {
-          const productos = prods.filter((data) => data.category == categoryId)
-          setProductos(productos)
+          const filteredProducts = prods.filter(
+            (data) => data.category == categoryId
+          )
+          setProductos(filteredProducts)
         } else {
           setProductos(prods)
         }
@@ -25,7 +27,7 @@ export const ItemListContainer = ({ mensaje, product }) => {
       className='item-list-container--container'
       style={{ display: 'flex', flexWrap: 'wrap', gap: '50px' }}
     >
-      <ItemList products={productos} />
+      <ItemList products={productos} plantilla='Item' />
     </div>
   )
 }
