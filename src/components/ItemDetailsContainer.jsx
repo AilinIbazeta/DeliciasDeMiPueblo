@@ -2,18 +2,14 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { ItemDetail } from './ItemDetail'
 import { Link } from 'react-router-dom'
+import { getProduct } from '../firebase/firebase'
 
 export const ItemDetailsContainer = () => {
   const [item, setItem] = useState([])
   const { productId } = useParams()
   useEffect(() => {
-    fetch('../data/productos.json')
-      .then((response) => response.json())
-      .then((prods) => {
-        const product = prods.find((data) => data.id == productId)
-
-        if (prods) setItem(product)
-      })
+    getProduct(productId)
+      .then((prod) => setItem(prod))
       .catch((error) => console.log(error))
   }, [])
   return (

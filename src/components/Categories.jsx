@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 export const Categories = () => {
   return (
     <div className='navItemsContent'>
-      <Link to={'/category/Tabletas'}>
+      <Link to={'/category/FrutosSecos'}>
         {' '}
-        <button className='navItems btn btn-lg'>Tabletas</button>
+        <button className='navItems btn btn-lg'>Frutos Secos</button>
       </Link>
       <Link to={'/category/Dulces'}>
         {' '}

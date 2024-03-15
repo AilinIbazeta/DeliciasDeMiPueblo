@@ -14,8 +14,8 @@ export const ItemCart = ({ product }) => {
     <div className='align-items-center border-bottom py-3'>
       <div className='me-3'>
         <img
-          src={`../img/${product.img}`}
-          alt={`Imagen de ${product.title}`}
+          src={`${product.img}`}
+          alt={`Imagen de ${product.nombre}`}
           className='img-fluid rounded'
           style={{ maxWidth: '80px', maxHeight: '80px' }}
         />
@@ -26,7 +26,6 @@ export const ItemCart = ({ product }) => {
           <button
             className='btn btn-outline-primary me-1 px-2 py-1 btn-sm'
             onClick={async () => {
-              decrement()
               updateItem(product.id, count - 1)
               decrement()
             }}
@@ -36,7 +35,6 @@ export const ItemCart = ({ product }) => {
           <span className='mx-1'>{count}</span>
           <button
             onClick={async () => {
-              increment()
               updateItem(product.id, count + 1)
               increment()
             }}

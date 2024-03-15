@@ -2,6 +2,7 @@ import React from 'react'
 import { useCounter } from '../hooks/useCounter'
 import { Link } from 'react-router-dom'
 import { useCarritoContext } from '../context/CartContext'
+import { toast } from 'react-toastify'
 export const ItemDetail = ({ item }) => {
   const { addItem } = useCarritoContext()
   const { count, increment, decrement, reset } = useCounter(
@@ -11,6 +12,16 @@ export const ItemDetail = ({ item }) => {
   )
   const handleAddToCart = () => {
     addItem(item, count)
+    toast.success(`Producto agregado al carrito 🗸`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    })
   }
   return (
     <div className='card osition-relative'>
@@ -23,11 +34,7 @@ export const ItemDetail = ({ item }) => {
       </div>
       <div className='row no-gutters'>
         <div className='col-md-4'>
-          <img
-            src={`../img/${item.img}`}
-            alt={item.nombre}
-            className='card-img'
-          />
+          <img src={`${item.img}`} alt={item.nombre} className='card-img' />
         </div>
         <div className='col-md-8'>
           <div className='card-body'>

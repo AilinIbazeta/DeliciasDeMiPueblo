@@ -12,7 +12,7 @@ export const Item = ({ product }) => {
           <div className=''>
             <div className=''>
               <img
-                src={`../img/${product.img}`}
+                src={`${product.img}`}
                 className='img-fluid rounded-start'
                 alt={product.nombre}
               />

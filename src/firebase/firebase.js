@@ -1,0 +1,229 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore, addDoc, collection, doc, getDocs, getDoc, updateDoc, deleteDoc } from "firebase/firestore"
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBgl14ydXZwu94V0RMtlfJ6nomU_fHNg_w",
+    authDomain: "deliciasdemipueblo-406ef.firebaseapp.com",
+    projectId: "deliciasdemipueblo-406ef",
+    storageBucket: "deliciasdemipueblo-406ef.appspot.com",
+    messagingSenderId: "594346577527",
+    appId: "1:594346577527:web:35a5da7e963b2b44638072"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const bdd = getFirestore()
+
+const prods = [
+    {
+        "id": 1,
+        "nombre": "Tableta dulce de alcayota",
+        "marca": "artesanal",
+        "precio": "120",
+        "stock": "50",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/1.png?alt=media&token=00dec561-430a-4ebc-b613-cce256c2c1d5",
+        "category": "Tortas"
+    },
+    {
+        "id": 2,
+        "nombre": "Tableta dulce de leche",
+        "marca": "artesanal",
+        "precio": "120",
+        "stock": "50",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/2.png?alt=media&token=698360c9-8774-4762-8740-d426e0253a81",
+        "category": "Tortas"
+    },
+    {
+        "id": 3,
+        "nombre": "Dulce de Alcayota",
+        "marca": "Cristo de los Cerros",
+        "precio": "1200",
+        "stock": "20",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/3.png?alt=media&token=e5e32b31-32f6-448d-af9d-668fbadb2b52",
+        "category": "Dulces"
+    },
+    {
+        "id": 4,
+        "nombre": "Dulce de Leche",
+        "marca": "Cristo de los Cerros",
+        "precio": "1200",
+        "stock": "20",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/4.png?alt=media&token=ca413f2a-453d-4e16-b8d9-9b7ff7b2488a",
+        "category": "Dulces"
+    },
+    {
+        "id": 5,
+        "nombre": "Torta al rescoldo",
+        "marca": "Tudcum",
+        "precio": "1000",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/5.png?alt=media&token=445d93a6-444f-4018-997d-d8ce7d3623f5",
+        "category": "Tortas"
+    },
+    {
+        "id": 6,
+        "nombre": "Dulce de Membrillo",
+        "marca": "Fornero",
+        "precio": "1200",
+        "stock": "20",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/6.png?alt=media&token=e3ca3278-1d85-439e-b3bb-429b6a55bb04",
+        "category": "Dulces"
+    },
+    {
+        "id": 7,
+        "nombre": "Semitas",
+        "marca": "Tudcum",
+        "precio": "100",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/7.png?alt=media&token=32240b34-5da5-4d72-aa01-d03927387dfb",
+        "category": "Tortas"
+    },
+    {
+        "id": 8,
+        "nombre": "Tortitas jachalleras",
+        "marca": "Jachal",
+        "precio": "100",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/8.png?alt=media&token=962d8e09-daec-4c77-93b9-e61f36dd28d9",
+        "category": "Tortas"
+    },
+    {
+        "id": 9,
+        "nombre": "Tortitas",
+        "marca": "Jachal",
+        "precio": "100",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/9.png?alt=media&token=930f1e1c-a901-40ac-a84d-770f57c2229a",
+        "category": "Tortas"
+    },
+    {
+        "id": 10,
+        "nombre": "Jalea de Membrillo",
+        "marca": "Los Montes",
+        "precio": "1000",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/10.png?alt=media&token=56a67f21-af22-4cdd-b355-8eaa8939f7de",
+        "category": "Dulces"
+    },
+    {
+        "id": 11,
+        "nombre": "Miel Pura de abejas",
+        "marca": "7 oasis",
+        "precio": "2000",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/11.png?alt=media&token=c8963020-ad59-4040-bf7e-9c333afdbb39",
+        "category": "Dulces"
+    },
+    {
+        "id": 12,
+        "nombre": "Arrope de miel",
+        "marca": "7 oasis",
+        "precio": "2000",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/12.png?alt=media&token=2381e098-79ba-41be-a5c6-3ea44b367b61",
+        "category": "Dulces"
+    },
+    {
+        "id": 13,
+        "nombre": "Arrope de chañar",
+        "marca": "Mupay",
+        "precio": "2000",
+        "stock": "40",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/13.png?alt=media&token=3b9e997c-b755-4570-9366-b4abc850b1e9",
+        "category": "Dulces"
+    },
+    {
+        "id": 14,
+        "nombre": "Nueces peladas x 1KG",
+        "marca": "Homemade",
+        "precio": "10000",
+        "stock": "10",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/14.png?alt=media&token=72fc784b-7c04-40be-9ab7-8c5cb5a90c46",
+        "category": "FrutosSecos"
+    },
+    {
+        "id": 15,
+        "nombre": "Pistachos con cáscara x 1KG",
+        "marca": "Homemade",
+        "precio": "10000",
+        "stock": "10",
+        "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/15.png?alt=media&token=ee1c00f8-2349-4067-a59c-e40e91e29619",
+        "category": "FrutosSecos"
+    }
+]
+
+
+export const createProducts = async () => {
+
+    prods.forEach(async (prod) => {
+        await addDoc(collection(bdd, "productos"), {
+            nombre: prod.nombre,
+            marca: prod.marca,
+            precio: prod.precio,
+            stock: prod.stock,
+            img: prod.img,
+            category: prod.category
+        })
+    })
+}
+
+export const getProducts = async () => {
+    const productos = await getDocs(collection(bdd, "productos"))
+    const items = productos.docs.map(async (prod) => { return { ...prod.data(), id: prod.id } })
+    console.log({ items })
+    return items
+
+}
+
+
+export const getProduct = async (id) => {
+    if (id) {
+        const producto = await getDoc(doc(bdd, "productos", id))
+        const item = { ...producto.data(), id: producto.id }
+        return item
+    }
+}
+
+export const updateProduct = async (id, info) => {
+    await updateDoc(doc(bdd, "productos", id), info)
+
+}
+
+export const deleteProduct = async (id) => {
+    if (id) {
+        await deleteDoc(doc(bdd, "productos", id))
+
+    }
+}
+
+// updateProduct("4vhqETwGHJ6Z7sFC3YFN", {
+//     "id": 1,
+//     "nombre": "Tableta dulce de alcayota",
+//     "marca": "artesanal",
+//     "precio": "100",
+//     "stock": "50",
+//     "img": "https://firebasestorage.googleapis.com/v0/b/deliciasdemipueblo-406ef.appspot.com/o/1.png?alt=media&token=00dec561-430a-4ebc-b613-cce256c2c1d5",
+//     "category": "Tortas"
+// })
+
+//ÓRDENES DE COMPRA:
+
+export const createOrdenCompra = async (cliente, precioTotal, carrito, fecha) => {
+
+    const ordenCompra = await addDoc(collection(bdd, "ordenesCompra"), {
+        cliente: cliente,
+        items: carrito,
+        precioTotal: precioTotal,
+        fecha: fecha,
+    })
+
+    return ordenCompra
+}
+
+export const getOrdenCompra = async (id) => {
+
+    const ordenCompra = await getDoc(doc(bdd, "ordenesCompra", id))
+    const item = { ...ordenCompra.data(), id: ordenCompra.id }
+
+    return item
+}

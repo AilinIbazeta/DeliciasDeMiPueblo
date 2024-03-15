@@ -1,4 +1,5 @@
 import './styles/App.css'
+import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
@@ -9,11 +10,13 @@ import { Checkout } from './components/Checkout'
 import { ItemDetailsContainer } from './components/ItemDetailsContainer'
 import { NotFound } from './components/NotFound'
 import { CarritoProvider } from './context/CartContext'
+import { ToastContainer } from 'react-toastify'
 export const App = () => {
   return (
     <BrowserRouter>
       <CarritoProvider>
         <NavBar />
+        <ToastContainer />
         <Routes>
           <Route
             path='/'
