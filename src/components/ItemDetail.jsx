@@ -60,14 +60,14 @@ export const ItemDetail = ({ item }) => {
         >
           +
         </button>
-        {/* <Link to={'/checkout'}> */}
+
         <button
+          disabled={count === 0}
           className='btn btn-primary mx-1 px-3 py-1 btn-sm d-flex justify-content-center align-items-center'
           onClick={handleAddToCart}
         >
           <p style={{ fontSize: '0.9rem', margin: 0 }}>Agregar</p>{' '}
         </button>
-        {/* </Link> */}
       </div>
     </div>
   )
