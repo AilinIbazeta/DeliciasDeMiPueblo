@@ -2,43 +2,39 @@ import React from 'react'
 import { useCarritoContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import { ItemList } from './ItemList'
+
 export const Cart = () => {
   const { carrito, totalPrice, emptyCart } = useCarritoContext()
+
   return (
-    <div>
+    <div className='container'>
       {carrito.length === 0 ? (
-        <>
-          <h2>Carrito vacío</h2>
-          <button className='btn btn-outline-primary mx-1 px-2 py-1 btn-sm'>
-            <Link to={'/'}>Volver al inicio</Link>
-          </button>
-        </>
+        <div className='text-center'>
+          <h2>Tu carrito está vacío</h2>
+          <Link to={'/'} className='btn btn-outline-primary mx-1 btn-sm'>
+            Volver al inicio
+          </Link>
+        </div>
       ) : (
-        <div className='d-flex'>
-          <ItemList
-            products={carrito}
-            plantilla={'ItemCart'}
-            ClassName='container'
-          />
-          <div className='row'>
-            <p>Resumen de la compra: $ {totalPrice()}</p>
-            <div>
-              <button
-                onClick={emptyCart}
-                className='btn btn-outline-primary mx-1 px-2 py-1 btn-sm'
-              >
-                Vaciar carrito
-              </button>
-              <Link to={'/'}>
-                <button className='btn btn-outline-primary mx-1 px-2 py-1 btn-sm'>
-                  Continuar comprando
-                </button>
-              </Link>
-              <Link to={'/checkout'}>
-                <button className='btn btn-outline-primary mx-1 px-2 py-1 btn-sm'>
+        <div className='row'>
+          <div className='col-md-6'>
+            <ItemList products={carrito} plantilla={'ItemCart'} />
+            <button onClick={emptyCart} className='btn btn-danger mt-3'>
+              Vaciar carrito
+            </button>
+          </div>
+          <div className='col-md-6'>
+            <div className='card'>
+              <div className='card-body'>
+                <h5 className='card-title'>Resumen de la compra</h5>
+                <p className='card-text'>Total: $ {totalPrice()}</p>
+                <Link to={'/checkout'} className='btn btn-primary btn-block'>
                   Finalizar compra
-                </button>
-              </Link>
+                </Link>
+                <Link to={'/'} className='btn btn-secondary btn-block mt-2'>
+                  Continuar comprando
+                </Link>
+              </div>
             </div>
           </div>
         </div>

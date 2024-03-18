@@ -8,7 +8,6 @@ export const Item = ({ product }) => {
       <div className='mb-5'>
         <div className='card mb-3' style={{ maxWidth: '250px' }}>
           {' '}
-          {/* Reducir el maxWidth */}
           <div className=''>
             <div className=''>
               <img
