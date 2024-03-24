@@ -6,7 +6,10 @@ export const Item = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`}>
       <div className='mb-5'>
-        <div className='card mb-3' style={{ maxWidth: '250px' }}>
+        <div
+          className='card mb-3'
+          style={{ maxWidth: '250px', height: '358px' }}
+        >
           {' '}
           <div className=''>
             <div className=''>

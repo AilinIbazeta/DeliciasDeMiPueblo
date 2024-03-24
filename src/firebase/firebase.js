@@ -170,7 +170,6 @@ export const createProducts = async () => {
 export const getProducts = async () => {
     const productos = await getDocs(collection(bdd, "productos"))
     const items = productos.docs.map(async (prod) => { return { ...prod.data(), id: prod.id } })
-    console.log({ items })
     return items
 
 }

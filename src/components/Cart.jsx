@@ -25,7 +25,7 @@ export const Cart = () => {
           </div>
           <div className='col-md-6'>
             <div className='card'>
-              <div className='card-body'>
+              <div className='card-body card-body__cart'>
                 <h5 className='card-title'>Resumen de la compra</h5>
                 <p className='card-text'>Total: $ {totalPrice()}</p>
                 <Link to={'/checkout'} className='btn btn-primary btn-block'>
