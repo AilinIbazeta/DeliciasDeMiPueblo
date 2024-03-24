@@ -32,7 +32,10 @@ export const App = () => {
             path='/product/:productId'
             element={<ItemDetailsContainer ClassName='container mt-5' />}
           ></Route>
-          <Route path='*' element={<NotFound />}></Route>
+          <Route
+            path='*'
+            element={<NotFound ClassName='container mt-5' />}
+          ></Route>
         </Routes>
         <Footer />
       </CarritoProvider>
